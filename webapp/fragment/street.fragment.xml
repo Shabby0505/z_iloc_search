@@ -1,0 +1,14 @@
+<core:FragmentDefinition
+	xmlns="sap.ui.comp.valuehelpdialog"
+	xmlns:core="sap.ui.core">
+	<ValueHelpDialog
+		title="{i18n>StreetAddress}"
+		ok=".onStreetOkPress"
+		cancel=".onStreetCancelPress"
+		key="ProductId"
+		descriptionKey="Name"
+		afterClose=".onStreetAfterClose"
+		supportRanges="true"
+		supportRangesOnly="true"/>
+</core:FragmentDefinition>
+

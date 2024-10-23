@@ -1,0 +1,212 @@
+<mvc:View controllerName="com.iloc.search.zilocsearch.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    	xmlns:f="sap.f"
+		xmlns="sap.m"
+		xmlns:fb="sap.ui.comp.filterbar"		
+		  xmlns:core="sap.ui.core">
+	<f:DynamicPage >
+		<f:title>
+				<f:DynamicPageTitle>
+					<!-- <f:heading>
+						<svm:SmartVariantManagement id="svm" showExecuteOnSelection="true" />
+					</f:heading>
+					<f:expandedContent>
+						<Label id="expandedLabel" text="No filters active" />
+					</f:expandedContent>
+					<f:snappedContent>
+						<Label id="snappedLabel" text="No filters active" />
+					</f:snappedContent> -->
+				</f:DynamicPageTitle>
+			</f:title>
+	 	<f:header>
+			<f:DynamicPageHeader>
+				<f:content>
+        			<fb:FilterBar id="filterbar" persistencyKey="myPersKey" useToolbar="false" search=".onSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad" >
+						<fb:filterGroupItems>
+								<fb:FilterGroupItem name="iLoc" label="{i18n>iloc}" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										 <MultiInput
+                                        id="idIloc"
+                                        valueHelpOnly="true"
+                                        width="60%"
+                                        valueHelpRequest=".onClickIlLoc"/>
+										
+									</fb:control>
+								</fb:FilterGroupItem>
+								<fb:FilterGroupItem name="plant"  label="{i18n>plant}" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+									 <MultiInput
+                                        id="idPlant"
+                                        valueHelpOnly="true"
+                                        width="60%"
+                                        valueHelpRequest=".onClickPlant"/>
+									</fb:control>
+								</fb:FilterGroupItem>
+								<fb:FilterGroupItem name="name1" label="{i18n>name1}" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+									 <MultiInput id="idName1"  valueHelpOnly="true" valueHelpRequest=".onClickName1"/>
+									</fb:control>
+								</fb:FilterGroupItem>
+								<fb:FilterGroupItem name="name2"  label="{i18n>name2}" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										<MultiInput id="idName2"  valueHelpOnly="true"  valueHelpRequest=".onClickName2"/>
+									</fb:control>
+								</fb:FilterGroupItem>
+								<fb:FilterGroupItem name="name3"  label="{i18n>name3}" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										 <MultiInput id="idName3"  valueHelpOnly="true"  valueHelpRequest=".onClickName3"/>
+									</fb:control>
+								</fb:FilterGroupItem>
+								<fb:FilterGroupItem name="Name4"  label="{i18n>name4}" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+									 <MultiInput
+                                        id="idName4"
+                                        valueHelpOnly="true"
+                                        width="60%"
+                                        valueHelpRequest=".onClickName4"/>
+									</fb:control>
+								</fb:FilterGroupItem>
+									<fb:FilterGroupItem name="Street"  label="{i18n>StreetAddress}" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+									 <MultiInput
+                                        id="idStreet"
+                                        valueHelpOnly="true"
+                                        width="60%"
+                                        valueHelpRequest=".onClickStreet"/>
+									</fb:control>
+								</fb:FilterGroupItem>
+								<fb:FilterGroupItem name="city"  label="{i18n>city}" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+									 <MultiInput
+                                        id="idCity"
+                                        valueHelpOnly="true"
+                                        width="60%"
+                                        valueHelpRequest=".onClickCity"/>
+									</fb:control>
+								</fb:FilterGroupItem>
+                                <fb:FilterGroupItem name="state"  label="{i18n>state}" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+									 <MultiInput id="idState"   valueHelpOnly="true"   valueHelpRequest=".onClickState" suggestionItems="{
+													path: 'StateModel1>/',
+													sorter: {path : 'Auart'}
+												}"	>
+											<core:Item key="{StateModel1>Region}" text="{StateModel1>RegionDescription}" />
+										</MultiInput>
+									</fb:control>
+								</fb:FilterGroupItem>
+                                <fb:FilterGroupItem name="zipCode"  label="{i18n>zipCode}" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										 <MultiInput
+                                        id="idZipCode"
+                                        valueHelpOnly="true"
+                                        width="60%"
+                                        valueHelpRequest=".onClickZipCode"/>
+									</fb:control>
+								</fb:FilterGroupItem>
+                                <fb:FilterGroupItem name="country" label="{i18n>country}" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										 <MultiInput
+                                        id="idCountry"
+                                        valueHelpOnly="true"
+                                        width="60%"
+                                        valueHelpRequest=".onClickCountry"/>
+									</fb:control>
+								</fb:FilterGroupItem>
+						</fb:filterGroupItems>
+					</fb:FilterBar>
+           		 </f:content>          
+			</f:DynamicPageHeader>  
+		</f:header>
+		<f:content>
+			<Table id="idSerNoTable"  selectionChange="onSelectRow" items="{iLocSearchModel>/}"
+							growing="true" growingScrollToLoad="false" growingThreshold="20"  
+							sticky="ColumnHeaders,HeaderToolbar"
+							inset="false" autoPopinMode="true">
+				<headerToolbar>
+					<OverflowToolbar>
+						<content>
+							<Title text="{i18n>iLocDetails}" level="H2" id="idTableHeader"/>
+							<ToolbarSpacer />
+						<!-- <Button
+								id ="idReturnOrderBtn"
+								text="Create Return Order"
+								press="onPressedCreateRE" enabled="false"/> -->
+							<!-- <Button
+								id ="idPGRBtn"
+								text="Create Service Del. PGR"
+								press="onPressedCreatePGR" enabled="false"/> -->
+							
+						</content>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column hAlign="Center"  importance="High">
+						<Text text="{i18n>iloc}" />
+					</Column>
+					<Column hAlign="Center"  importance="High">
+						<Text text="{i18n>name1}" />
+					</Column>
+					<Column hAlign="Center"  importance="High">
+						<Text text="{i18n>name2}" />
+					</Column>
+					<Column hAlign="Center" demandPopin="true"
+                                            popinDisplay="Inline">
+						<Text text="{i18n>name3}" />
+					</Column>
+					<Column hAlign="Center"  demandPopin="true"
+                                            popinDisplay="Inline">
+						<Text text="{i18n>name4}" />
+					</Column>
+					<Column hAlign="Center" demandPopin="true"
+                                            popinDisplay="Inline">
+						<Text text="{i18n>street}" />
+					</Column>
+					<Column hAlign="Center" demandPopin="true"
+                                            popinDisplay="Inline">	
+						<Text text="{i18n>city}" />
+					</Column>
+					<Column hAlign="Center" demandPopin="true"
+                                            popinDisplay="Inline">
+						<Text text="{i18n>zipCode}" />
+					</Column>
+					<Column hAlign="Center" demandPopin="true"
+                                            popinDisplay="Inline">
+						<Text text="{i18n>state}" />
+					</Column>
+					<Column hAlign="Center"  demandPopin="true"
+                                            popinDisplay="Inline">
+						<Text text="{i18n>country}" />
+					</Column>
+					<Column hAlign="Center" demandPopin="true"
+                                            popinDisplay="Inline">
+						<Text text="{i18n>phoneNumber}" />
+					</Column>
+					<Column hAlign="Center"  demandPopin="true"
+                                            popinDisplay="Inline">
+						<Text text="{i18n>emailAddress}" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem> 
+						<cells>
+							<Text	text="{iLocSearchModel>StorageLocation}" />
+							<Text	text="{iLocSearchModel>Name1}" />
+							<Text	text="{iLocSearchModel>Name2}" />
+							<Text	text="{iLocSearchModel>Name3}" />
+							<Text	text="{iLocSearchModel>Name4}" />
+							<Text	text="{iLocSearchModel>Street}" />
+							<Text	text="{iLocSearchModel>City}" />
+							<Text	text="{iLocSearchModel>PostalCode}" />
+							<Text	text="{iLocSearchModel>State}" />
+							<Text	text="{iLocSearchModel>Country}" />
+							<Text	text="{iLocSearchModel>TelNumber}" />
+							<Text	text="{iLocSearchModel>EmailAddress}" />
+							
+					
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</f:content>   
+	</f:DynamicPage>
+</mvc:View>

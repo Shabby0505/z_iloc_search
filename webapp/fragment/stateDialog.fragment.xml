@@ -1,0 +1,24 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	
+
+		<SelectDialog
+		id="mySelectDialog"
+		noDataText="No State Found"
+		title="Select State"
+		search="._handleValueHelpSearch"
+		confirm="._handleValueHelConfirm"
+		cancel=".onDialogClose"
+	
+		multiSelect="true"
+		items="{
+			path: 'StateModel1>/',
+			sorter: {path : 'Region'}
+		}">
+		<StandardListItem
+			title="{StateModel1>Region}"
+			description="{StateModel1>RegionDescription}"
+			press="onPressOrderType"
+			type="Active" 
+			  />
+	</SelectDialog>
+</core:FragmentDefinition>

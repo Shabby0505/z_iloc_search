@@ -1,0 +1,14 @@
+<core:FragmentDefinition
+	xmlns="sap.ui.comp.valuehelpdialog"
+	xmlns:core="sap.ui.core">
+	<ValueHelpDialog
+		title="{i18n>name4}"
+		ok=".onName4VHOkPress"
+		cancel=".onName4VHCancelPress"
+		key="ProductId"
+		descriptionKey="Name"
+		afterClose=".onName4VHAfterClose"
+		supportRanges="true"
+		supportRangesOnly="true"/>
+</core:FragmentDefinition>
+
