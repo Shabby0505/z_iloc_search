@@ -124,11 +124,20 @@ sap.ui.define([
 
             _handleValueHelpSearch: function (evt) {
                 var sValue = evt.getParameter("value");
-                var oFilter = new Filter(
-                    "Region",
-                    FilterOperator.Contains,
-                    sValue
-                );
+                // var oFilter = new Filter(
+                //     "Region",
+                //     FilterOperator.Contains,
+                //     sValue
+                // );
+
+
+                var oFilter =  new sap.ui.model.Filter({
+                    filters: [
+                    new sap.ui.model.Filter("Region",FilterOperator.Contains, sValue),
+                    new sap.ui.model.Filter("RegionDescription",FilterOperator.Contains ,sValue)
+                    ],
+                    and: false
+                })
                 evt.getSource().getBinding("items").filter([oFilter]);
             },
 
@@ -733,12 +742,25 @@ sap.ui.define([
 
                                     if (oToken.data("range")) {
                                         var oRange = oToken.data("range");
-                                        oFilter.push(new Filter({
-                                            path: "StorageLocation",
-                                            operator: oRange.operation,
-                                            value1: oRange.value1,
-                                            value2: oRange.value2
-                                        }));
+
+                                        if(oRange.exclude === true && oRange.operation === "EQ")
+                                            {
+                                                oFilter.push(new Filter({
+                                                    path: "StorageLocation",
+                                                    operator: "NE",
+                                                    value1: oRange.value1,
+                                                    value2: oRange.value2
+                                                }));
+                                            }
+                                            else{
+                                                oFilter.push(new Filter({
+                                                    path: "StorageLocation",
+                                                    operator: oRange.operation,
+                                                    value1: oRange.value1,
+                                                    value2: oRange.value2
+                                                }));
+                                            }
+
                                     }
 
                                 });
@@ -753,12 +775,26 @@ sap.ui.define([
 
                                     if (oToken.data("range")) {
                                         var oRange = oToken.data("range");
-                                        oFilter.push(new Filter({
-                                            path: "Plant",
-                                            operator: oRange.operation,
-                                            value1: oRange.value1,
-                                            value2: oRange.value2
-                                        }));
+
+                                        if(oRange.exclude === true && oRange.operation === "EQ")
+                                            {
+                                                oFilter.push(new Filter({
+                                                    path: "Plant",
+                                                    operator: "NE",
+                                                    value1: oRange.value1,
+                                                    value2: oRange.value2
+                                                }));
+                                            }
+                                            else{
+                                             
+                                                oFilter.push(new Filter({
+                                                    path: "Plant",
+                                                    operator: oRange.operation,
+                                                    value1: oRange.value1,
+                                                    value2: oRange.value2
+                                                }));
+                                            }
+
                                     }
 
                                 });
@@ -772,12 +808,30 @@ sap.ui.define([
                                 var aFilters = aTokens.map(function (oToken) {
                                     if (oToken.data("range")) {
                                         var oRange = oToken.data("range");
-                                        oFilter.push(new Filter({
-                                            path: "Name1",
-                                            operator:oRange.operation,
-                                            value1: oRange.value1,
-                                            value2: oRange.value2
-                                        }));
+
+
+                                        if(oRange.exclude === true && oRange.operation === "EQ")
+                                            {
+                                                oFilter.push(new Filter({
+                                                    path: "Name1",
+                                                    operator:"NE",
+                                                    value1: oRange.value1,
+                                                    value2: oRange.value2
+                                                }));
+                                            }
+                                            else{
+                                             
+                                                oFilter.push(new Filter({
+                                                    path: "Name1",
+                                                    operator:oRange.operation,
+                                                    value1: oRange.value1,
+                                                    value2: oRange.value2
+                                                }));
+                                            }
+
+
+
+                                     
                                     }
 
                                 });
@@ -791,12 +845,27 @@ sap.ui.define([
 
                                     if (oToken.data("range")) {
                                         var oRange = oToken.data("range");
-                                        oFilter.push(new Filter({
-                                            path: "Name2",
-                                            operator: oRange.operation,
-                                            value1: oRange.value1,
-                                            value2: oRange.value2
-                                        }));
+
+                                        if(oRange.exclude === true && oRange.operation === "EQ")
+                                            {
+                                                oFilter.push(new Filter({
+                                                    path: "Name2",
+                                                    operator: "NE",
+                                                    value1: oRange.value1,
+                                                    value2: oRange.value2
+                                                }));
+                                            }
+                                            else{
+                                             
+                                                oFilter.push(new Filter({
+                                                    path: "Name2",
+                                                    operator: oRange.operation,
+                                                    value1: oRange.value1,
+                                                    value2: oRange.value2
+                                                }));
+                                            }
+
+                                     
                                     }
 
                                 });
@@ -810,12 +879,28 @@ sap.ui.define([
 
                                     if (oToken.data("range")) {
                                         var oRange = oToken.data("range");
-                                        oFilter.push(new Filter({
-                                            path: "Name3",
-                                            operator: oRange.operation,
-                                            value1: oRange.value1,
-                                            value2: oRange.value2
-                                        }));
+
+
+                                        if(oRange.exclude === true && oRange.operation === "EQ")
+                                            {
+                                                oFilter.push(new Filter({
+                                                    path: "Name3",
+                                                    operator: "NE",
+                                                    value1: oRange.value1,
+                                                    value2: oRange.value2
+                                                }));
+                                            }
+                                            else{
+                                             
+                                                oFilter.push(new Filter({
+                                                    path: "Name3",
+                                                    operator: oRange.operation,
+                                                    value1: oRange.value1,
+                                                    value2: oRange.value2
+                                                }));
+                                            }
+
+                                     
                                     }
 
                                 });
@@ -829,12 +914,28 @@ sap.ui.define([
 
                                     if (oToken.data("range")) {
                                         var oRange = oToken.data("range");
+
+
+                                        if(oRange.exclude === true && oRange.operation === "EQ")
+                                            {
+                                              
                                         oFilter.push(new Filter({
                                             path: "Name4",
-                                            operator: oRange.operation,
+                                            operator: "NE",
                                             value1: oRange.value1,
                                             value2: oRange.value2
                                         }));
+                                            }
+                                        else{   
+                                                oFilter.push(new Filter({
+                                                path: "Name4",
+                                                operator: oRange.operation,
+                                                value1: oRange.value1,
+                                                value2: oRange.value2
+                                              }));
+                                            }
+
+
                                     }
 
                                 });
@@ -848,12 +949,27 @@ sap.ui.define([
 
                                     if (oToken.data("range")) {
                                         var oRange = oToken.data("range");
+
+
+                                        if(oRange.exclude === true && oRange.operation === "EQ")
+                                            {
+                                                oFilter.push(new Filter({
+                                                    path: "Street",
+                                                    operator:"NE",
+                                                    value1: oRange.value1,
+                                                    value2: oRange.value2
+                                                }));
+                                            }
+                                        else{                                            
+
                                         oFilter.push(new Filter({
                                             path: "Street",
                                             operator: oRange.operation,
                                             value1: oRange.value1,
                                             value2: oRange.value2
                                         }));
+                                            }
+
                                     }
 
                                 });
@@ -867,12 +983,29 @@ sap.ui.define([
 
                                     if (oToken.data("range")) {
                                         var oRange = oToken.data("range");
-                                        oFilter.push(new Filter({
-                                            path: "City",
-                                            operator: oRange.operation,
-                                            value1: oRange.value1,
-                                            value2: oRange.value2
-                                        }));
+
+
+
+                                        if(oRange.exclude === true && oRange.operation === "EQ")
+                                            {
+                                                oFilter.push(new Filter({
+                                                    path: "City",
+                                                    operator: "NE",
+                                                    value1: oRange.value1,
+                                                    value2: oRange.value2
+                                                }));
+                                            }
+                                        else{                                            
+
+                                            oFilter.push(new Filter({
+                                                path: "City",
+                                                operator: oRange.operation,
+                                                value1: oRange.value1,
+                                                value2: oRange.value2
+                                            }));
+                                            }
+
+                                     
                                     }
 
                                 });
@@ -886,6 +1019,8 @@ sap.ui.define([
                                 var aFilters = aTokens.map(function (oToken) {
                                     if (oToken.mProperties.text !== '') {
 
+
+                                        
                                         oFilter.push(new Filter({
                                             path: "State",
                                             operator: 'EQ',
@@ -905,12 +1040,28 @@ sap.ui.define([
 
                                     if (oToken.data("range")) {
                                         var oRange = oToken.data("range");
-                                        oFilter.push(new Filter({
-                                            path: "PostalCode",
-                                            operator: oRange.operation,
-                                            value1: oRange.value1,
-                                            value2: oRange.value2
-                                        }));
+
+
+                                        if(oRange.exclude === true && oRange.operation === "EQ")
+                                            {
+                                                oFilter.push(new Filter({
+                                                    path: "PostalCode",
+                                                    operator: "NE",
+                                                    value1: oRange.value1,
+                                                    value2: oRange.value2
+                                                }));
+                                            }
+                                        else{                                            
+
+                                            oFilter.push(new Filter({
+                                                path: "PostalCode",
+                                                operator: oRange.operation,
+                                                value1: oRange.value1,
+                                                value2: oRange.value2
+                                            }));
+                                            }
+
+                                    
                                     }
 
                                 });
@@ -924,12 +1075,28 @@ sap.ui.define([
 
                                     if (oToken.data("range")) {
                                         var oRange = oToken.data("range");
-                                        oFilter.push(new Filter({
-                                            path: "Country",
-                                            operator: oRange.operation,
-                                            value1: oRange.value1,
-                                            value2: oRange.value2
-                                        }));
+
+
+                                        if(oRange.exclude === true && oRange.operation === "EQ")
+                                            {
+                                                oFilter.push(new Filter({
+                                                    path: "Country",
+                                                    operator: "NE",
+                                                    value1: oRange.value1,
+                                                    value2: oRange.value2
+                                                }));
+                                            }
+                                        else{                                            
+
+                                            oFilter.push(new Filter({
+                                                path: "Country",
+                                                operator: oRange.operation,
+                                                value1: oRange.value1,
+                                                value2: oRange.value2
+                                            }));
+                                            }
+
+                                     
                                     }
 
                                 });
